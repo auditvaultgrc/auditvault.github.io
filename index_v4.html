@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISOQuest | Conversational Compliance Auditing</title>
+    <meta name="description" content="ISOQuest's AI-powered platform combines document analysis with conversational, interview-style auditing to automate and streamline compliance evidence gathering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #212529;
+            --primary-color: #0052cc;
+            --secondary-text-color: #555;
+            --border-color: #dee2e6;
+            --section-bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding-top: 70px; /* Space for fixed nav */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo { font-weight: 700; font-size: 1.5rem; text-decoration: none; color: var(--text-color); }
+        .nav-links a { margin: 0 15px; text-decoration: none; color: var(--secondary-text-color); font-weight: 500; }
+        .nav-cta { background-color: var(--primary-color); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;}
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        section.bg-light { background-color: var(--section-bg-light); }
+
+        h1, h2, h3 { color: #111; font-weight: 700; line-height: 1.3; margin-top: 0; }
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 60px; }
+        h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+        p { font-size: 1.1rem; margin-bottom: 1.5em; color: var(--secondary-text-color); }
+
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 80px 0; }
+        .hero-image-placeholder { background-color: #e9ecef; border-radius: 12px; width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; color: #adb5bd; font-size: 1.2rem; }
+        .sub-headline { font-size: 1.25rem; color: var(--secondary-text-color); margin-bottom: 30px; }
+        .cta-button { display: inline-block; background-color: var(--primary-color); color: #ffffff; padding: 15px 30px; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 8px; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .cta-button:hover { background-color: #0041a3; transform: translateY(-2px); }
+
+        .value-prop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .value-prop-item { background-color: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; }
+        .value-prop-item h3 { font-size: 1.8rem; color: var(--primary-color); }
+        .value-prop-item p { margin-bottom: 0; font-size: 1rem; }
+        
+        .feature-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .feature-image-placeholder { background-color: #e9ecef; border-radius: 12px; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; color: #adb5bd; }
+        
+        .use-case-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .use-case-card { background-color: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); }
+
+        .auditor-empowerment { border: 2px solid var(--primary-color); background-color: #e7f1ff; padding: 40px; border-radius: 12px; text-align: center; }
+        .auditor-empowerment h3 { color: var(--primary-color); }
+        
+        .final-cta {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 80px 20px;
+            border-radius: 12px;
+            margin-top: 80px;
+        }
+        .final-cta h2 { color: #fff; }
+        .final-cta p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 30px auto; }
+        
+        .footer { background-color: #212529; color: #fff; padding: 60px 0 20px 0; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; padding-bottom: 40px; }
+        .footer-col h4 { color: #fff; }
+        .footer-col a { display: block; color: #adb5bd; text-decoration: none; margin-bottom: 10px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #444; color: #adb5bd; font-size: 0.9rem;}
+
+        /* Cookie Banner */
+        #cookie-consent-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #212529; color: #fff; padding: 20px; display: none; justify-content: space-between; align-items: center; z-index: 1000; }
+        #cookie-consent-banner p { color: #fff; margin: 0; font-size: 0.9rem; }
+        #cookie-consent-banner a { color: var(--primary-color); text-decoration: underline;}
+        #cookie-accept-btn { background-color: var(--primary-color); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 20px;}
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            .nav-links { display: none; }
+            h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; }
+            .hero, .feature-section { grid-template-columns: 1fr; }
+            .hero { text-align: center; }
+            .hero-image-placeholder { height: 250px; order: -1; }
+            .value-prop-grid, .footer-grid { grid-template-columns: 1fr; }
+            #cookie-consent-banner { flex-direction: column; text-align: center; }
+            #cookie-accept-btn { margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">ISOQuest</a>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#use-cases">Use Cases</a>
+                <a href="#benefits">Benefits</a>
+            </div>
+            <a href="mailto:isoquest@abilitymatrix.com?subject=Requesting Early Access to ISOQuest" target="_blank" rel="noopener noreferrer" class="nav-cta">Request Access</a>
+        </div>
+    </nav>
+    
+    <header class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Go Beyond the Document</h1>
+                <p class="sub-headline">ISOQuest is a conversational compliance engine. We combine AI document analysis with adaptive, interview-style questioning to automate evidence gathering and eliminate tedious manual work.</p>
+                <a href="mailto:isoquest@abilitymatrix.com?subject=Requesting Early Access to ISOQuest" target="_blank" rel="noopener noreferrer" class="cta-button">Request Early Access</a>
+            </div>
+            <div class="hero-image-placeholder">Hero Image Placeholder</div>
+        </section>
+    </header>
+
+    <main>
+        <section id="how-it-works" class="bg-light">
+            <div class="container">
+                <h2>A Hybrid Approach to Auditing</h2>
+                 <div class="feature-section">
+                    <div class="feature-image-placeholder">UI screenshot placeholder</div>
+                    <div>
+                        <h3>1. Choose Your Evidence Path</h3>
+                        <p>Begin by uploading existing policy documents, contracts, or work orders. Or, start fresh with a direct, conversational Q&A session. The choice is yours.</p>
+                        <h3>2. AI Analyzes and Adapts</h3>
+                        <p>Our engine maps evidence from your documents to controls. If it finds gaps or needs clarification, it generates precise, targeted questions—it won't ask about controls you've already proven.</p>
+                        <h3>3. Review the Complete Picture</h3>
+                        <p>Get an audit-ready traceability matrix that combines evidence from documents and the full conversational record. Everything is transparent and defensible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="auditor-empowerment">
+                <h3>Empowering Auditors, Not Replacing Them</h3>
+                <p>ISOQuest handles the time-consuming data gathering and mapping that auditors hate. This frees up expert auditors to focus on what they do best: deep analysis, identifying nuance, and investigating the nitty-gritty details clients might try to hide. The AI provides the evidence; the auditor makes the final, expert judgment.</p>
+            </div>
+        </section>
+        
+        <section id="use-cases" class="bg-light">
+            <div class="container">
+                <h2>Built for Complex Compliance Challenges</h2>
+                <div class="use-case-section">
+                    <div class="use-case-card">
+                        <h3>Scalable Vendor Audits (OT/Manufacturing)</h3>
+                        <p>Instead of a slow, manual process of reviewing contracts and chasing vendors, provide vendors with access to ISOQuest. Our AI ingests their documentation (contracts, work orders) and uses adaptive questioning to fill gaps, creating a complete control matrix that scales across dozens of vendors without scaring them away.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h3>Enterprise Compliance Teams</h3>
+                        <p>Achieve and maintain audit readiness across multiple frameworks like NIST, ISO, and SOC 2. Give leadership real-time, defensible insights into your compliance posture and eliminate the frantic, last-minute rush before an audit.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h3>Auditing & Consulting Firms</h3>
+                        <p>Significantly increase your team's efficiency and capacity. Automate the low-level mapping work to close audits faster, scale your firm, and focus your highly-paid experts on delivering strategic value to clients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="container">
+             <h2>Give Your Team an Unfair Advantage</h2>
+             <div class="value-prop-grid">
+                <div class="value-prop-item">
+                    <h3>60% Faster</h3>
+                    <p>Slash audit preparation time by automating manual mapping and evidence gathering.</p>
+                </div>
+                <div class="value-prop-item">
+                    <h3>Adaptive AI</h3>
+                    <p>Ask only relevant questions to fill evidence gaps, respecting everyone's time.</p>
+                </div>
+                <div class="value-prop-item">
+                    <h3>100% Traceable</h3>
+                    <p>Produce a perfect, auditable trail combining documents and conversation that builds trust.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-light">
+            <div class="container">
+                <h2>Your Strategic AI Advantage</h2>
+                <div class="feature-section">
+                     <div>
+                        <h3>More Than a Tool—It's Your AI Engine</h3>
+                        <p>ISOQuest is built on a powerful AI core designed for the future of compliance services. Our proprietary approach to semantic search and intelligent questioning doesn't just check boxes—it understands intent. This is the scalable, intelligent asset that positions your firm at the forefront of the AI-driven professional services landscape, making you an attractive and relevant player in the market.</p>
+                    </div>
+                    <div class="feature-image-placeholder">Abstract AI graphic placeholder</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="container">
+             <div class="final-cta">
+                <h2>Ready to Retire the Highlighter?</h2>
+                <p>Stop wasting time on manual work. Join our early access program and be the first to experience the future of compliance auditing.</p>
+                <a href="mailto:isoquest@abilitymatrix.com?subject=Requesting Early Access to ISOQuest" target="_blank" rel="noopener noreferrer" class="cta-button">Request Early Access</a>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>ISOQuest</h4>
+                    <p style="color: #adb5bd; margin-bottom: 0;">AI-powered conversational compliance auditing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="#benefits">Benefits</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:isoquest@abilitymatrix.com">isoquest@abilitymatrix.com</a>
+                    <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ISOQuest. All rights reserved. | Made with ❤️ in Mississauga, ON.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="cookie-consent-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" target="_blank" rel="noopener noreferrer">Learn more</a>.</p>
+        <button id="cookie-accept-btn">Accept</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const consentBanner = document.getElementById('cookie-consent-banner');
+            const acceptBtn = document.getElementById('cookie-accept-btn');
+
+            if (!localStorage.getItem('cookieConsent')) {
+                consentBanner.style.display = 'flex';
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'true');
+                consentBanner.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.nav-links a, .footer-col a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+        console.log("ISOQuest page loaded. Ready for conversational compliance.");
+    </script>
+
+</body>
+</html>
+```
