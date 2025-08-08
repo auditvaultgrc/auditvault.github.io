@@ -76,8 +76,13 @@
         .value-prop-item p { margin-bottom: 0; font-size: 1rem; }
         
         .feature-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .feature-image-placeholder { background-color: #e9ecef; border-radius: 12px; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; color: #adb5bd; }
-        
+        .feature-image-container { width: 100%; height: 350px; /* Adjust height as needed */ border-radius: 12px; overflow: hidden; }
+        .feature-image { width: 100%; height: 100%; object-fit: cover; /* This makes the image fill the container without distortion */ border-radius: 12px; }
+        @media (max-width: 768px) {
+                                .feature-image-container {
+                                    height: 250px; /* Adjust height for mobile devices */
+                                    }
+        }
         .use-case-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .use-case-card { background-color: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); }
 
@@ -153,7 +158,9 @@
             <div class="container">
                 <h2>A Hybrid Approach to Auditing</h2>
                  <div class="feature-section">
-                    <div class="feature-image-placeholder">UI screenshot placeholder</div>
+                    <div class="feature-image-container">
+                        <img src="Audit-trail.webp" alt="Audit trail, collecting audit documentation and questions and answers using natural language" class="feature-image">
+                    </div>    
                     <div>
                         <h3>1. Choose Your Evidence Path</h3>
                         <p>Begin by uploading existing policy documents, contracts, or work orders. Or, start fresh with a direct, conversational Q&A session. The choice is yours.</p>
@@ -219,7 +226,9 @@
                         <h3>More Than a Tool—It's Your AI Engine</h3>
                         <p>AuditVault is built on a powerful AI core designed for the future of compliance services. Our proprietary approach to semantic search and intelligent questioning doesn't just check boxes—it understands intent. This is the scalable, intelligent asset that positions your firm at the forefront of the AI-driven professional services landscape, making you an attractive and relevant player in the market.</p>
                     </div>
-                    <div class="feature-image-placeholder">Abstract AI graphic placeholder</div>
+                    <div class="feature-image-container">
+                        <img src="Secure-data-protection-audit-vault.webp" alt="Secure data vault for your audit documents and audit matrix and audit trail" class="feature-image">
+                    </div>
                 </div>
             </div>
         </section>
